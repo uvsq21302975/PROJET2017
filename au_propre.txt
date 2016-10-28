@@ -1,0 +1,51 @@
+#include <QApplication>
+#include <QLabel>
+#include <QPicture>
+#include <QPainter>
+
+int main(int argc, char *argv[])
+{
+    int i,w;
+    int j=0;
+    int h=0;
+
+    int k=0;
+    int m=0;
+
+   QApplication a(argc, argv);
+   QLabel l; //affichage de texte ou d'image
+   QPicture pi;    //afficher sur le conteneurs
+   QPainter p(&pi);  //conteneur
+
+   p.setRenderHint(QPainter::Antialiasing);
+   p.setPen(QPen(Qt::blue, 1)); //police(couleur et taille)
+
+
+   // quadrillage horizontale
+   for(i=0;i<20;i++)
+   {
+   p.drawLine(0, h, 500, j);
+   j=j+25;
+   h=h+25;
+   p.drawLine(m,0 , k, 500);
+   m=m+25;
+   k=k+25;
+   }
+   //
+
+
+//p.setWindow(300,300,1000,1000);
+
+
+
+// setwindow(int x, int y, int width, int height): pour regler taille fenetre?
+
+
+
+
+   p.end(); // Don't forget this line! -> destructeur de p, renvoie true si desactiver
+
+   l.setPicture(pi); //"definit le contenu de l'etiquette a l'image(le precedent est effacer)
+   l.show();        //afficher l
+   return a.exec(); //lance affichage
+}
