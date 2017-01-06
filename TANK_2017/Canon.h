@@ -1,5 +1,6 @@
 #ifndef CANON_H
 #define CANON_H
+#include "Obus.h"
 
 #include<QGraphicsPixmapItem>
 #include <QGraphicsItem>

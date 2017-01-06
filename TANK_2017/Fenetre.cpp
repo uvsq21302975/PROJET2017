@@ -5,6 +5,7 @@
 #include <QBrush>
 #include <QImage>
 #include <QTime>
+#include <ctime>
 
 
 
@@ -24,23 +25,58 @@ Fenetre::Fenetre(){
 
 // creation matrice(plateau de jeu)
 
-    int plateau[10][6];
+type_obstacle plateau[10][6];
+
+srand(time(NULL));
 
     for(int i = 0; i < 10; i++)
     {
       for(int j = 0; j < 6; j++)
       {
-          if (i%2==0 and j%2==0){
+          int nb_aleatoire_obstacle=rand()%10;
+
+          if (nb_aleatoire_obstacle>8)
+          {
+              if(i%2==0){
+
         Obstacle *obstacle= new Obstacle(0,eau);
         obstacle->setPos(i*100,j*100);
          scene->addItem(obstacle);
-          plateau[i][j]=arbre;}
-      }
+          plateau[i][j]=eau;}
+              else
+              plateau[i][j]=rien;
+          }
 
+          else if (nb_aleatoire_obstacle>7)
+          {
+              if(i%2==0){
+
+        Obstacle *obstacle= new Obstacle(0,rocher);
+        obstacle->setPos(i*100,j*100);
+         scene->addItem(obstacle);
+          plateau[i][j]=rocher;}
+              else
+              plateau[i][j]=rien;
+          }
+
+          else if (nb_aleatoire_obstacle>6)
+          {
+              if(i%2==0){
+        Obstacle *obstacle= new Obstacle(0,arbre);
+        obstacle->setPos(i*100,j*100);
+         scene->addItem(obstacle);
+          plateau[i][j]=arbre;}
+              else
+              plateau[i][j]=rien;
+          }
+
+          else
+          plateau[i][j]=rien;
+
+       }
     }
 
-    // double boucle pour remplir la map
-    //
+
 
     // coordoonnees du tank
 
@@ -53,7 +89,8 @@ Fenetre::Fenetre(){
 
 
     // creation du Tank
-    Tank *tank = new Tank();
+
+    Tank *tank = new Tank(plateau);
 
         tank->setPos(x_tank1_depart,y_tank1_depart); // positionement aleatoire du Tank
 
@@ -66,10 +103,7 @@ Fenetre::Fenetre(){
     tank->setFlag(QGraphicsItem::ItemIsFocusable);
     tank->setFocus();
 
-    //
-  //  Obstacle *obstacle= new Obstacle(0,arbre);// 0 par defaut
 
-    // scene->addItem(obstacle);
 
     //
     // ajouter le tank a la scene
@@ -78,23 +112,22 @@ Fenetre::Fenetre(){
     scene->addItem(tank->canon_tank);
 
 
+     /*
+    Tank *tank2 = new Tank(plateau);
 
+        tank2->setPos(100,100); // positionement aleatoire du Tank
 
+        tank2->canon_tank->setPos(120,100);
 
+        tank2->setFlag(QGraphicsItem::ItemIsFocusable);
+        tank2->setFocus();
 
+        scene->addItem(tank2);
+        scene->addItem(tank2->canon_tank);
+*/
 
-
-
-
-
-
-
-
-
+//
 show();
 
 
 }
-
-
-

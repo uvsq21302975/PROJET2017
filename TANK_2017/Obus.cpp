@@ -1,10 +1,9 @@
-/*
-#include "Fenetre.h"
+/*#include "Obus.h"
 #include <typeinfo>
 
-Obus::Obus(QGraphicsItem *parent): QGraphicsPixmapItem(parent){
+Obus::Obus(int type): QGraphicsPixmapItem(parent){
 
-    // set graphic
+
     setPixmap(QPixmap("image_obus.png"));//image a telecharger
 
     QTimer * timer = new QTimer();
@@ -13,10 +12,11 @@ Obus::Obus(QGraphicsItem *parent): QGraphicsPixmapItem(parent){
 
     timer->start(50);
 }
-
+*/
+/*
 void Obus::tir()
 {
-
+// CREER OBUS
 
 
     // get a list of all the items currently colliding with this bullet
@@ -52,4 +52,8 @@ void Obus::tir()
         }
 }
 
+//1e etape : calculer point d'impact de l'obus
+//          bouger obus
+//          modifier terrain(matrice) : detruire item visuellement plus dans la matrice
+//          passer le tour
 */

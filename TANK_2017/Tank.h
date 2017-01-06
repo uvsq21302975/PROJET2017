@@ -7,17 +7,17 @@
 #include <QGraphicsItem>
 #include <QString>
 #include "Canon.h"
-
-
+#include "Obstacle.h"
 
 
 class Tank:public QObject, public QGraphicsPixmapItem{
     Q_OBJECT
 public:
-    Tank(QGraphicsItem * parent=0);
+    Tank(type_obstacle pere[10][6]);
     void keyPressEvent(QKeyEvent * event);
     int direction;
     Canon* canon_tank;
+    type_obstacle plateau[10][6];
 
 
 private:

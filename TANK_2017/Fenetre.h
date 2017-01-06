@@ -20,10 +20,8 @@ class Fenetre : public QGraphicsView
 public:
     Fenetre();
 
-
-
     QGraphicsScene *scene;
-    Tank * player;
+
 
 
 

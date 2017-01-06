@@ -1,7 +1,6 @@
-/*
-
 #ifndef OBUS_H
 #define OBUS_H
+
 
 #include <QGraphicsRectItem>
 #include <QObject>
@@ -10,8 +9,8 @@ class Obus :public QObject, public QGraphicsPixmapItem{
     Q_OBJECT
 public:
 
-    Obus(QGraphicsItem * parent=0);
-
+    Obus(int type);
+int type;
 public slots:
     void tir();
 
@@ -20,4 +19,4 @@ public slots:
 
 
 #endif // OBUS_H
-*/
+

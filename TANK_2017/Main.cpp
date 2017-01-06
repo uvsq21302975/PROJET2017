@@ -9,7 +9,7 @@
 
 #include <QtGui>
 
-Fenetre * fenetre;
+
 
 int main(int argc, char *argv[])
 {

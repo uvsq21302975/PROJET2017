@@ -2,7 +2,6 @@
 #include <QGraphicsScene>
 #include <QKeyEvent>
 #include <QDebug>
-//#include "fenetre.h"
 #include <typeinfo>
 #include <iostream>
 
@@ -10,10 +9,10 @@ using namespace std;
 
 
 
-//extern Fenetre * fenetre;
+//extern fenetre * fenetre;
 
 
-Tank::Tank(QGraphicsItem *parent): QGraphicsPixmapItem(parent)
+Tank::Tank(type_obstacle pere[10][6])
 {
 
 
@@ -22,18 +21,14 @@ Tank::Tank(QGraphicsItem *parent): QGraphicsPixmapItem(parent)
     canon_tank= new Canon();
     canon_tank->setFlag(QGraphicsItem::ItemIsFocusable);
     canon_tank->setTransformOriginPoint(5,30);
-
+    int i,j;
+    for(i=0; i<10 ;i++)
+        for(j=0; j<6 ;j++)
+            plateau[i][j] = pere[i][j] ;
 }
 
 
-
-
-
 void Tank::keyPressEvent(QKeyEvent *event){
-
-
-
-
 
 
             if (event->key() == Qt::Key_Left){
@@ -58,11 +53,15 @@ void Tank::keyPressEvent(QKeyEvent *event){
                     canon_tank->setRotation(-90);
                      canon_tank->setPos(x()+15,y()-53);
                     //
-                if (pos().x() > 0) // pour pas que il sorte de la fenetre
-                  //if((plateau(i-1)(j) == rien) && (i>0))
+                if (pos().x() > 0){ // pour pas que il sorte de la fenetre
+                    int a =(x()/100)-1;
+                    int b =y()/100;
+                    int c = x();
+                   int a2 =((y()-50)/100);// test pour les 2 cotes avant du tank
+                    if( ( (c % 100) > 10) || ((a >= 0) && (plateau[a][b] == rien) && (plateau[a][a2] == rien) ))
                 setPos(x()-10,y());
 
-
+}
              }
             else if (event->key() == Qt::Key_Right){
                 setRotation(90);
@@ -85,10 +84,15 @@ void Tank::keyPressEvent(QKeyEvent *event){
                      canon_tank->setRotation(90);
                       canon_tank->setPos(x()-25,y()-5);
                       //
-                if (pos().x() < 1000)
-                setPos(x()+10,y());
+                if (pos().x() < 1000){
+                    int a =((x())/100)+1;
+                    int b =y()/100;
+                    int c = x();
+                 int a2 =((y()+50)/100);
+                    if( ( (c % 100) < 90) || ((a < 10) && (plateau[a][b] == rien) && (plateau[a][a2] == rien)))
+                    setPos(x()+10,y());
              }
-
+            }
 
             else if (event->key() == Qt::Key_Up){//si jappuie up
                 setRotation(0);
@@ -110,9 +114,15 @@ void Tank::keyPressEvent(QKeyEvent *event){
 
                 canon_tank->setRotation(0);
                  canon_tank->setPos(x()+20,y()-10);
-                if (pos().y()>0)
+                if (pos().y()>0){
+                    int a =(x()/100);
+                    int a2 =((x()+50)/100);
+                    int b =(y()/100) - 1;
+                    int c = y();
+                    if( ( (c % 100) > 10) || ((b >= 0) && (plateau[a][b] == rien) && (plateau[a2][b] == rien)))
                 setPos(x(),y()-10);
              }
+            }
 
 
            else if (event->key() == Qt::Key_Down){
@@ -133,9 +143,15 @@ void Tank::keyPressEvent(QKeyEvent *event){
 
                     canon_tank->setRotation(-180);
                      canon_tank->setPos(x()-28,y()-50);
-                if (pos().y()<600)
-                setPos(x(),y()+10);
+                if (pos().y()<600){
+                    int a =(x()/100);
+                    int b =(y()/100) + 1;
+                    int c = y();
+                    int a2 =((x()-50)/100);
+                    if( ( (c % 100) < 90) || ((b < 6) && (plateau[a][b] == rien) && (plateau[a2][b] == rien)))
 
+                setPos(x(),y()+10);
+        }
     }
             else if (event->key() == Qt::Key_Q){
               canon_tank->setRotation(canon_tank->angleH - 10);
@@ -155,8 +171,9 @@ void Tank::keyPressEvent(QKeyEvent *event){
                 canon_tank->angleV -= 10;
                 cout << canon_tank->angleV << endl;
              }
-
 }
+
+
 
 /*
     if (event->key() == Qt::Key_Space){
@@ -169,4 +186,3 @@ void Tank::keyPressEvent(QKeyEvent *event){
         scene()->addItem(obus);
     }
 */
-
