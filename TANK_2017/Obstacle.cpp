@@ -5,7 +5,7 @@
 
 
 
-    Obstacle::Obstacle(QGraphicsItem *parent,type_obstacle x): QGraphicsPixmapItem(parent){
+    Obstacle::Obstacle(QGraphicsItem *parent,contenu_case x): QGraphicsPixmapItem(parent){
 
         switch (x) {
         case rocher:

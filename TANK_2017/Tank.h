@@ -13,11 +13,17 @@
 class Tank:public QObject, public QGraphicsPixmapItem{
     Q_OBJECT
 public:
-    Tank(type_obstacle pere[10][6]);
+    Tank(contenu_case pere[10][6]);
     void keyPressEvent(QKeyEvent * event);
     int direction;
     Canon* canon_tank;
-    type_obstacle plateau[10][6];
+    contenu_case plateau[10][6];
+
+    Obus* obus1;
+    Obus* obus2;
+    Obus* obus3;
+
+    void tir();
 
 
 private:

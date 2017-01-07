@@ -12,7 +12,7 @@ using namespace std;
 //extern fenetre * fenetre;
 
 
-Tank::Tank(type_obstacle pere[10][6])
+Tank::Tank(contenu_case pere[10][6])
 {
 
 
@@ -25,6 +25,10 @@ Tank::Tank(type_obstacle pere[10][6])
     for(i=0; i<10 ;i++)
         for(j=0; j<6 ;j++)
             plateau[i][j] = pere[i][j] ;
+
+    obus1 = new Obus(0);
+    obus2 = new Obus(0);
+    obus3 = new Obus(0);
 }
 
 
@@ -171,18 +175,64 @@ void Tank::keyPressEvent(QKeyEvent *event){
                 canon_tank->angleV -= 10;
                 cout << canon_tank->angleV << endl;
              }
-}
 
 
 
-/*
-    if (event->key() == Qt::Key_Space){
+
+
+   else if (event->key() == Qt::Key_I){
+
+        if ((direction==0) && (canon_tank->angleV<30))
+        {
+            int a =((x()+50)/100);
+            int b =(y()/100) - 1;
+
+       obus1->setPos(a*100,b*100);
+       plateau[a][b]=rien;
+
+        scene()->addItem(obus1);
+        }
+
+        else if ((direction==1) && (canon_tank->angleV<30))
+        {
+            int a =((x())/100)+1;
+            int b =y()/100;
+
+       obus1->setPos(a*100,b*100);
+       plateau[a][b]=rien;
+
+        scene()->addItem(obus1);
+        }
+
+
+        else if ((direction==2) && (canon_tank->angleV<30))
+        {
+            int a =(x()/100);
+            int b =(y()/100) + 1;
+
+       obus1->setPos(a*100,b*100);
+       plateau[a][b]=rien;
+
+        scene()->addItem(obus1);
+        }
+
+        else if ((direction==3) && (canon_tank->angleV<30))
+        {
+            int a =(x()/100)-1;
+            int b =y()/100;
+       obus1->setPos(a*100,b*100);
+       //stockage impact
+       plateau[a][b]=rien;
+        scene()->addItem(obus1);
+        }
 
 
 
-        Obus *obus= new Obus();
+    }// fin key I
 
-        obus->setPos(x()+100,y()+60);
-        scene()->addItem(obus);
-    }
-*/
+
+
+
+
+
+}// fin focntion key press event

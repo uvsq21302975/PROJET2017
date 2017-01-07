@@ -3,14 +3,14 @@
 #include <QGraphicsPixmapItem>
 #include <QGraphicsItem>
 
-enum type_obstacle
+enum contenu_case
 {
-   rocher, arbre, eau, joueur, rien
+   rocher, arbre, eau, joueur, rien, impact
 };
 
 typedef struct t{
 
-  type_obstacle P[10][6] ;
+  contenu_case P[10][6] ;
 } tab;
 
 
@@ -19,7 +19,7 @@ class Obstacle : public QGraphicsPixmapItem{
 
 public:
 
-Obstacle(QGraphicsItem * parent=0,type_obstacle x=arbre);
+Obstacle(QGraphicsItem * parent=0,contenu_case x=arbre);
 
 int resistance;
 

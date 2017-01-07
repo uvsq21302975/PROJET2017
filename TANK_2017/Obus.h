@@ -2,17 +2,18 @@
 #define OBUS_H
 
 
-#include <QGraphicsRectItem>
 #include <QObject>
+#include <QGraphicsItem>
 
-class Obus :public QObject, public QGraphicsPixmapItem{
-    Q_OBJECT
+class Obus :public QObject, public QGraphicsPixmapItem {
+Q_OBJECT
 public:
 
-    Obus(int type);
-int type;
+int type_obus;
+
+    Obus(QGraphicsItem * parent=0);
+
 public slots:
-    void tir();
 
 };
 

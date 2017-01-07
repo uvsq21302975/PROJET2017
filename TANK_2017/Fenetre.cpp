@@ -25,7 +25,7 @@ Fenetre::Fenetre(){
 
 // creation matrice(plateau de jeu)
 
-type_obstacle plateau[10][6];
+contenu_case plateau[10][6];
 
 srand(time(NULL));
 
@@ -59,7 +59,7 @@ srand(time(NULL));
               plateau[i][j]=rien;
           }
 
-          else if (nb_aleatoire_obstacle>6)
+          else if (nb_aleatoire_obstacle>5)
           {
               if(i%2==0){
         Obstacle *obstacle= new Obstacle(0,arbre);
@@ -112,7 +112,7 @@ srand(time(NULL));
     scene->addItem(tank->canon_tank);
 
 
-     /*
+
     Tank *tank2 = new Tank(plateau);
 
         tank2->setPos(100,100); // positionement aleatoire du Tank
@@ -124,7 +124,7 @@ srand(time(NULL));
 
         scene->addItem(tank2);
         scene->addItem(tank2->canon_tank);
-*/
+
 
 //
 show();
