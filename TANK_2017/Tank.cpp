@@ -26,7 +26,10 @@ Tank::Tank(contenu_case pere[10][6])
         for(j=0; j<6 ;j++)
             plateau[i][j] = pere[i][j] ;
 
-    obus1 = new Obus(0);
+
+   for(i=0;i<10;i++){
+    tabobu[i] = new Obus(0);   // ICI, ON VEUT INITIALISER NOTRE TABLEAU AVEC UN OBUS DANS CHAQUE CASE
+   }
     obus2 = new Obus(0);
     obus3 = new Obus(0);
 }
@@ -182,12 +185,14 @@ void Tank::keyPressEvent(QKeyEvent *event){
 
    else if (event->key() == Qt::Key_I){
 
+           int compt = 0;
+
         if ((direction==0) && (canon_tank->angleV<30))
         {
             int a =((x()+50)/100);
             int b =(y()/100) - 1;
 
-       obus1->setPos(a*100,b*100);
+       tabobu[compt]->setPos(a*100,b*100); //ICI ON VEUT QUE A CHAQUE APPEL, COMPT AUGMENTE DE 1 AFIN QUE ON UTILISE LES 10 OBUS DU TABLEAU
        plateau[a][b]=rien;
 
         scene()->addItem(obus1);
@@ -226,7 +231,7 @@ void Tank::keyPressEvent(QKeyEvent *event){
         scene()->addItem(obus1);
         }
 
-
+compt = compt +1;
 
     }// fin key I
 

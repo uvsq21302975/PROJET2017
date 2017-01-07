@@ -19,9 +19,11 @@ public:
     Canon* canon_tank;
     contenu_case plateau[10][6];
 
+    Obus** tabobu = new Obus*[10]; // ICI ON VEUT DECLARER UN TABLEAU D'OBUS DYNAMIQUE CAR (voir plus BAS)
     Obus* obus1;
     Obus* obus2;
     Obus* obus3;
+    // Obus* tabobu[10] = new Obus(0);  IDEE ?
 
     void tir();
 
