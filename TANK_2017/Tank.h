@@ -23,8 +23,9 @@ public:
     Obus* obus2;
     Obus* obus3;
 
-    void tir();
 
+
+  //  int actif ;
 
 private:
 

@@ -96,10 +96,10 @@ srand(time(NULL));
 
         tank->canon_tank->setPos(x_canon,y_canon);
 
-    plateau[x_tank1_depart/100][y_tank1_depart/100]=joueur;
+    //plateau[x_tank1_depart/100][y_tank1_depart/100]=joueur;
 
 
-    // Pour se faucaliser sur un Tank
+    // Pour se focaliser sur un Tank
     tank->setFlag(QGraphicsItem::ItemIsFocusable);
     tank->setFocus();
 
@@ -121,10 +121,31 @@ srand(time(NULL));
 
         tank2->setFlag(QGraphicsItem::ItemIsFocusable);
         tank2->setFocus();
-
+       //plateau[100/100][100/100]=joueur;
         scene->addItem(tank2);
         scene->addItem(tank2->canon_tank);
 
+        // faire jouer chacun son tour
+        //tank->actif=0;
+
+
+/*
+            for(int z=0;z<10;z++)
+{
+             if (tank->actif % 2 == 0)
+            {
+              tank->setFocus();
+              tank->actif += 1;
+            }
+
+            else
+             {
+               tank2->setFocus();
+               tank->actif += 2;
+             }
+
+}
+*/
 
 //
 show();

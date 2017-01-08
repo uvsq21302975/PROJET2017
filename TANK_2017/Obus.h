@@ -9,7 +9,6 @@ class Obus :public QObject, public QGraphicsPixmapItem {
 Q_OBJECT
 public:
 
-int type_obus;
 
     Obus(QGraphicsItem * parent=0);
 

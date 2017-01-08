@@ -26,9 +26,10 @@ Tank::Tank(contenu_case pere[10][6])
         for(j=0; j<6 ;j++)
             plateau[i][j] = pere[i][j] ;
 
-    obus1 = new Obus(0);
+
     obus2 = new Obus(0);
     obus3 = new Obus(0);
+
 }
 
 
@@ -64,7 +65,6 @@ void Tank::keyPressEvent(QKeyEvent *event){
                    int a2 =((y()-50)/100);// test pour les 2 cotes avant du tank
                     if( ( (c % 100) > 10) || ((a >= 0) && (plateau[a][b] == rien) && (plateau[a][a2] == rien) ))
                 setPos(x()-10,y());
-
 }
              }
             else if (event->key() == Qt::Key_Right){
@@ -182,6 +182,9 @@ void Tank::keyPressEvent(QKeyEvent *event){
 
    else if (event->key() == Qt::Key_I){
 
+                obus1 = new Obus(0);// creation obus pour chaque impact
+
+
         if ((direction==0) && (canon_tank->angleV<30))
         {
             int a =((x()+50)/100);
@@ -189,9 +192,10 @@ void Tank::keyPressEvent(QKeyEvent *event){
 
        obus1->setPos(a*100,b*100);
        plateau[a][b]=rien;
-
         scene()->addItem(obus1);
+        //actif += 1;
         }
+
 
         else if ((direction==1) && (canon_tank->angleV<30))
         {
@@ -200,8 +204,8 @@ void Tank::keyPressEvent(QKeyEvent *event){
 
        obus1->setPos(a*100,b*100);
        plateau[a][b]=rien;
-
         scene()->addItem(obus1);
+       // actif += 1;
         }
 
 
@@ -212,8 +216,8 @@ void Tank::keyPressEvent(QKeyEvent *event){
 
        obus1->setPos(a*100,b*100);
        plateau[a][b]=rien;
-
         scene()->addItem(obus1);
+       // actif += 1;
         }
 
         else if ((direction==3) && (canon_tank->angleV<30))
@@ -224,6 +228,7 @@ void Tank::keyPressEvent(QKeyEvent *event){
        //stockage impact
        plateau[a][b]=rien;
         scene()->addItem(obus1);
+       // actif += 1;
         }
 
 
