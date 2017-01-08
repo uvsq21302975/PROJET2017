@@ -6,10 +6,11 @@
 #include <QImage>
 #include <QTime>
 #include <ctime>
-
-
+#include <unistd.h>
 
 Fenetre::Fenetre(){
+
+
 
     // create the scene
     scene = new QGraphicsScene();
@@ -101,7 +102,7 @@ srand(time(NULL));
 
     // Pour se focaliser sur un Tank
     tank->setFlag(QGraphicsItem::ItemIsFocusable);
-    tank->setFocus();
+    //tank->setFocus();
 
 
 
@@ -120,35 +121,37 @@ srand(time(NULL));
         tank2->canon_tank->setPos(120,100);
 
         tank2->setFlag(QGraphicsItem::ItemIsFocusable);
-        tank2->setFocus();
+//        tank2->setFocus();
        //plateau[100/100][100/100]=joueur;
         scene->addItem(tank2);
         scene->addItem(tank2->canon_tank);
 
         // faire jouer chacun son tour
-        //tank->actif=0;
+
+        tank->setAdversaire(tank2);
+        tank2->setAdversaire(tank);
+        // on lie les 2 tanks, l'un est l'adversaire de l'autre et vice versa
+
+        tank2->setFocus();
+       show();
+//
 
 
+}
 /*
-            for(int z=0;z<10;z++)
+void Fenetre::jouer()
 {
-             if (tank->actif % 2 == 0)
-            {
-              tank->setFocus();
-              tank->actif += 1;
-            }
+    if (aqt%2==0)
+    {
+        tank->setFocus();
+        tank->actif=0;
+    }
 
-            else
-             {
-               tank2->setFocus();
-               tank->actif += 2;
-             }
-
+    else
+    {
+        tank2->setFocus();
+        tank2->actif=0;
+        //aqt++;
+    }
 }
 */
-
-//
-show();
-
-
-}

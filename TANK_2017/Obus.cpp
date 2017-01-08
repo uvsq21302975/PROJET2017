@@ -6,7 +6,7 @@ Obus::Obus(QGraphicsItem *parent)
 
 
     setPixmap(QPixmap("image_obus.png").scaled(1000/10,600/6, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
-
+    //setZValue(-1);
 
 }
 

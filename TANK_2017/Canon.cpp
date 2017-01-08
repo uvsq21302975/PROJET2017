@@ -13,6 +13,7 @@ Canon::Canon(QGraphicsItem *parent): QGraphicsPixmapItem(parent){
     angle_actuel=0;// probleme initaliser place du canon selon direction tank
 
     setPixmap(QPixmap("image_canon.jpeg"));
+    setZValue(2);//superieur au tank car on affiche par dessus
 }
 
 
