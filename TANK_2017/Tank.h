@@ -25,7 +25,8 @@ public:
     Obus* obus1;
     Obus* obus2;
     Obus* obus3;
-
+    Obus* obus4;
+    Obus* obus5;
 
 
   //  int actif ;
