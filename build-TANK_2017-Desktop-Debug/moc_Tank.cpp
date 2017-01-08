@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'Tank.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.2.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.4.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'Tank.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.2.1. It"
+#error "This file was generated using the moc from 5.4.1. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,18 +20,19 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_Tank_t {
     QByteArrayData data[1];
-    char stringdata[6];
+    char stringdata[5];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    offsetof(qt_meta_stringdata_Tank_t, stringdata) + ofs \
-        - idx * sizeof(QByteArrayData) \
+    qptrdiff(offsetof(qt_meta_stringdata_Tank_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData)) \
     )
 static const qt_meta_stringdata_Tank_t qt_meta_stringdata_Tank = {
     {
-QT_MOC_LITERAL(0, 0, 4)
+QT_MOC_LITERAL(0, 0, 4) // "Tank"
+
     },
-    "Tank\0"
+    "Tank"
 };
 #undef QT_MOC_LITERAL
 
@@ -61,7 +62,7 @@ void Tank::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
 
 const QMetaObject Tank::staticMetaObject = {
     { &QObject::staticMetaObject, qt_meta_stringdata_Tank.data,
-      qt_meta_data_Tank,  qt_static_metacall, 0, 0}
+      qt_meta_data_Tank,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
 
@@ -72,7 +73,7 @@ const QMetaObject *Tank::metaObject() const
 
 void *Tank::qt_metacast(const char *_clname)
 {
-    if (!_clname) return 0;
+    if (!_clname) return Q_NULLPTR;
     if (!strcmp(_clname, qt_meta_stringdata_Tank.stringdata))
         return static_cast<void*>(const_cast< Tank*>(this));
     if (!strcmp(_clname, "QGraphicsPixmapItem"))

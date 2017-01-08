@@ -18,6 +18,8 @@ Tank::Tank(contenu_case pere[10][6])
 
     setPixmap(QPixmap("image_tank.jpg"));
     direction = 0;
+    comptobus = 0;
+    typeobus =  1;
     canon_tank= new Canon();
     canon_tank->setFlag(QGraphicsItem::ItemIsFocusable);
     canon_tank->setTransformOriginPoint(5,30);
@@ -28,7 +30,7 @@ Tank::Tank(contenu_case pere[10][6])
 
 
     obus2 = new Obus(0);
-    obus3 = new Obus(0);
+    obus3 = new Obus(0); //inutile ?
 
 }
 
@@ -36,7 +38,13 @@ Tank::Tank(contenu_case pere[10][6])
 void Tank::keyPressEvent(QKeyEvent *event){
 
 
-            if (event->key() == Qt::Key_Left){
+        if (event->key() == Qt::Key_1){
+        typeobus = 1;
+        }
+        if (event->key() == Qt::Key_2){
+        typeobus = 2;
+        }
+        if (event->key() == Qt::Key_Left){
                 setRotation(270);
                 if(direction == 0){
                     setPos(x()+10,y()+50);
@@ -180,10 +188,10 @@ void Tank::keyPressEvent(QKeyEvent *event){
 
 
 
-   else if (event->key() == Qt::Key_I){
+   else if (event->key() == Qt::Key_I && comptobus < 10 && typeobus == 1){
 
                 obus1 = new Obus(0);// creation obus pour chaque impact
-
+                comptobus = comptobus + 1;
 
         if ((direction==0) && (canon_tank->angleV<30))
         {
@@ -231,9 +239,80 @@ void Tank::keyPressEvent(QKeyEvent *event){
        // actif += 1;
         }
 
+  }// fin key I obus type 1 _____________________________________________________
 
 
-    }// fin key I
+        else if (event->key() == Qt::Key_I && comptobus < 10 && typeobus == 2){
+
+                     obus2 = new Obus(0);// creation obus pour chaque impact
+                     obus3 = new Obus(0);
+                     comptobus = comptobus + 1;
+
+             if ((direction==0) && (canon_tank->angleV<30))
+             {
+                 int a =((x()+50)/100);
+                 int b =(y()/100) - 1;
+
+            obus2->setPos(a*100,b*100);
+            plateau[a][b]=rien;
+             scene()->addItem(obus2);
+
+             obus3->setPos(a*100,b*100 -100);
+             plateau[a][b-1]=rien;
+              scene()->addItem(obus3);
+             //actif += 1;
+             }
+
+
+             else if ((direction==1) && (canon_tank->angleV<30))
+             {
+                 int a =((x())/100)+1;
+                 int b =y()/100;
+
+            obus2->setPos(a*100,b*100);
+            plateau[a][b]=rien;
+             scene()->addItem(obus2);
+
+             obus3->setPos(a*100 +100,b*100);
+             plateau[a+1][b]=rien;
+              scene()->addItem(obus3);
+             // actif += 1;
+             }
+
+
+             else if ((direction==2) && (canon_tank->angleV<30))
+             {
+                 int a =(x()/100);
+                 int b =(y()/100) + 1;
+
+            obus2->setPos(a*100,b*100);
+            plateau[a][b]=rien;
+             scene()->addItem(obus2);
+
+             obus3->setPos(a*100,b*100 +100);
+             plateau[a][b+1]=rien;
+              scene()->addItem(obus3);
+             // actif += 1;
+             }
+
+             else if ((direction==3) && (canon_tank->angleV<30))
+             {
+                 int a =(x()/100)-1;
+                 int b =y()/100;
+            obus2->setPos(a*100,b*100);
+            //stockage impact
+            plateau[a][b]=rien;
+             scene()->addItem(obus2);
+
+             obus3->setPos(a*100 -100,b*100);
+             plateau[a-1][b]=rien;
+              scene()->addItem(obus3);
+            // actif += 1;
+             }
+
+
+
+         }// fin key I obus type 2
 
 
 

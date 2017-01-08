@@ -16,6 +16,9 @@ public:
     Tank(contenu_case pere[10][6]);
     void keyPressEvent(QKeyEvent * event);
     int direction;
+    int comptobus1;
+    int comptobus2;
+    int typeobus;
     Canon* canon_tank;
     contenu_case plateau[10][6];
 
